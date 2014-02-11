@@ -1,4 +1,4 @@
-powerline-patcher-script
+powerline-patched-script
 ========================
 
 ## Usage
