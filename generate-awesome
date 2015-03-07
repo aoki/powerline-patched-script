@@ -1,0 +1,5 @@
+#!/bin/sh -eu
+
+git clone https://github.com/ringohub/awesome-terminal-fonts.git
+git -C awesome-terminal-fonts checkout patching-strategy
+

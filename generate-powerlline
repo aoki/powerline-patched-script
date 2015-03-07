@@ -1,11 +1,13 @@
-#!/bin/sh
+#!/bin/sh -eu
 
-FONT_NAME=SourceCodePro_FontsOnly-1.017
+FONT_NAME=source-code-pro-1.017R
 
 git clone https://github.com/Lokaltog/vim-powerline.git
 
-curl -O "http://jaist.dl.sourceforge.net/project/sourcecodepro.adobe/${FONT_NAME}.zip"
-unzip ${FONT_NAME}.zip
+wget "https://github.com/adobe-fonts/source-code-pro/archive/1.017R.zip"
+unzip 1.017R.zip
+
+mkdir pached
 
 fontforge -lang=py -script ./vim-powerline/fontpatcher/fontpatcher "./${FONT_NAME}/OTF/SourceCodePro-Black.otf"
 fontforge -lang=py -script ./vim-powerline/fontpatcher/fontpatcher "./${FONT_NAME}/OTF/SourceCodePro-Bold.otf"
@@ -15,4 +17,6 @@ fontforge -lang=py -script ./vim-powerline/fontpatcher/fontpatcher "./${FONT_NAM
 fontforge -lang=py -script ./vim-powerline/fontpatcher/fontpatcher "./${FONT_NAME}/OTF/SourceCodePro-Regular.otf"
 fontforge -lang=py -script ./vim-powerline/fontpatcher/fontpatcher "./${FONT_NAME}/OTF/SourceCodePro-Semibold.otf"
 
-rm -rf ${FONT_NAME}.zip ${FONT_NAME} vim-powerline 
+mv *.otf pached/.
+
+rm -rf 1.017R.zip ${FONT_NAME} vim-powerline 
